@@ -19,6 +19,7 @@ namespace ClashLand.Logic
     internal partial class Device
     {
         internal Level Player;
+        internal static List<Level> m_vOnlinePlayers = new List<Level>();
         internal string AndroidID, OpenUDID, Model, OSVersion, MACAddress, AdvertiseID, VendorID, IPAddress;
         internal bool Android, Advertising;
         internal int Last_Checksum, Last_Tick, Depth;
@@ -45,7 +46,6 @@ namespace ClashLand.Logic
         public Device(Socket so)
         {
             this.Socket = so;
-
             if (Constants.RC4)
             {
                 IncomingPacketsKey = new byte[Key._RC4_EndecryptKey.Length];
@@ -62,7 +62,6 @@ namespace ClashLand.Logic
             this.SocketHandle = so.Handle;
 
             this.IPAddress = ((IPEndPoint) so.RemoteEndPoint).Address.ToString();
-
             this.Keep_Alive = new Keep_Alive_OK(this);
             this.LastKeepAlive = DateTime.Now;
             this.NextKeepAlive = this.LastKeepAlive.AddSeconds(30);
