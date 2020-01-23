@@ -32,6 +32,10 @@ namespace ClashLand.Core
 
         internal static void Add(Level Player)
         {
+            if (Device.m_vOnlinePlayers.Contains(Player) == false)
+            {
+                Device.m_vOnlinePlayers.Add(Player);
+            }
 
             if (Levels.ContainsKey(Player.Avatar.UserId))
             {
