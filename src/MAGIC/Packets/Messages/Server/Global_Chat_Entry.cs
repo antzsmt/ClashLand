@@ -14,6 +14,7 @@ namespace ClashLand.Packets.Messages.Server
     internal class Global_Chat_Entry : Message
     {
         internal string Message = string.Empty;
+        internal string Name = string.Empty;
         internal Logic.Player Message_Sender = null;
         internal bool Sender = false;
         internal bool Bot = false;
@@ -22,12 +23,18 @@ namespace ClashLand.Packets.Messages.Server
         public Global_Chat_Entry(Device Device) : base(Device)
         {
             this.Identifier = 24715;
-        }
+            this.Message = "Hello World !";
+            this.Name = string.Empty;
+            this.Message_Sender = null;
+            this.Sender = false;
+            this.Bot = false;
+            this.Regex = false;
+    }
 
         internal override void Encode()
         {
             this.Data.AddString(this.Message);
-            this.Data.AddString(Bot ? "Clashology" : Sender  ? "You" : Regex ? $"[{this.Message_Sender.Rank}] {this.Message_Sender.Name}" : this.Message_Sender.Name);
+            this.Data.AddString(Bot ? Name : Sender  ? "You" : Regex ? $"[{this.Message_Sender.Rank}] {this.Message_Sender.Name}" : this.Message_Sender.Name);
 
             this.Data.AddInt(this.Message_Sender.Level); // Unknown
             this.Data.AddInt(Bot ? 22 : this.Message_Sender.League);
