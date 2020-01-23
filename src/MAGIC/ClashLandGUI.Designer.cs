@@ -1,4 +1,4 @@
-﻿namespace ClashLandGUI
+namespace ClashLandGUI
 {
     partial class ClashLandGUI2
     {
