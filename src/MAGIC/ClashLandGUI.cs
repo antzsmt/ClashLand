@@ -2,7 +2,7 @@
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Collections.Concurrent;
 using System.Configuration;
 using System.Data;
 using System.Resources;
@@ -41,7 +41,8 @@ namespace ClashLandGUI
 
         public int Count = 0;
 
-        internal Device Device { get; private set; }
+        internal Device Device { get; set; }
+
 
         private void ClashLandGUI2_Load(object sender, EventArgs e)
         {
@@ -241,17 +242,42 @@ namespace ClashLandGUI
         //Send To Gobal Chat Button
         private void materialRaisedButton9_Click(object sender, EventArgs e)
         {
-            foreach (var _Device in Resources.GChat.Get_Chat(this.Device).Values.ToList())
+            foreach (var onlineplayer in Device.m_vOnlinePlayers)
+            {
+                string test = onlineplayer.Avatar.Name;
+
+                if (onlineplayer.Device == null)
+                {
+
+                }
+                else
+                {
+                    var msg = new Global_Chat_Entry(onlineplayer.Device)
+                    {
+                        Identifier = 24715,
+                        Name = textBox22.Text,
+                        Message = textBox21.Text,
+                        Message_Sender = onlineplayer.Device.Player.Avatar,
+                        Bot = true,
+                        Regex = true,
+                        Sender = true
+                    };
+
+                    msg.Send();
+                }
+            }
+
+            /*foreach (var _Device in Resources.GChat.Get_Chat(Device).Values.ToList())
             {
                 new Global_Chat_Entry(_Device)
                 {
-                    /*Message = textBox21.Text,
+                    Message = textBox21.Text,
                     Message_Sender = this.Device.Player.Avatar,
                     Bot = true,
                     Regex = true,
-                    Sender = this.Device == _Device*/
+                    Sender = this.Device == _Device
                 }.Send();
-            }
+            }*/
         }
 
         //Send To Mailbox Button
