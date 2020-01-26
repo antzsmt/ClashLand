@@ -53,7 +53,7 @@ namespace ClashLand.Core.Networking
 
         internal static void Listen()
         {
-            Listener.Bind(new IPEndPoint(IPAddress.Any, 9339));
+            Listener.Bind(new IPEndPoint(IPAddress.Any, Convert.ToInt32(Constants.Port)));
             Listener.Listen(100);
 
             Program.Stopwatch.Stop();
