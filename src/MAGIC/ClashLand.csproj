@@ -214,6 +214,7 @@
     <Compile Include="Core\API\Discord\Client.cs" />
     <Compile Include="Core\API\Discord\CommandHandler.cs" />
     <Compile Include="Core\API\Discord\Modules\Core_Module.cs" />
+    <Compile Include="Core\API\player.cs" />
     <Compile Include="Core\API\WebApi.cs" />
     <Compile Include="Core\Battles.cs" />
     <Compile Include="Core\Battles_V2.cs" />
@@ -250,6 +251,7 @@
     <Compile Include="Core\Consoles\Colorful\TextFormatter.cs" />
     <Compile Include="Core\Consoles\Colorful\TextPattern.cs" />
     <Compile Include="Core\Consoles\Colorful\TextPatternCollection.cs" />
+    <Compile Include="Core\DatabaseManager.cs" />
     <Compile Include="Core\Database\Battle.cs">
       <DependentUpon>Mysql.tt</DependentUpon>
     </Compile>
@@ -269,12 +271,13 @@
     <Compile Include="Core\Devices.cs" />
     <Compile Include="Core\Events\EventsHandler.cs" />
     <Compile Include="Core\Events\Parser.cs" />
-    <Compile Include="Core\Exceptions.cs" />
+    <Compile Include="Core\ExceptionLogger.cs" />
     <Compile Include="Core\Loggers.cs" />
     <Compile Include="Core\Networking\Gateway.cs" />
     <Compile Include="Core\Networking\Pool.cs" />
     <Compile Include="Core\Networking\Processor.cs" />
     <Compile Include="Core\Clans.cs" />
+    <Compile Include="Core\ObjectManager.cs" />
     <Compile Include="Core\Players.cs" />
     <Compile Include="Core\Player_Region.cs" />
     <Compile Include="Core\Resources.cs" />

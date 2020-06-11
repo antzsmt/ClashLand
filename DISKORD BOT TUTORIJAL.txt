@@ -1,0 +1,17 @@
+commands:
+
+1. status //not yet work
+
+2. statusextra //not yet work
+
+3. ping //work
+
+4.easystatus //work
+
+how to make your bot application:
+
+1. open this site and login here https://discordapp.com/developers/applications/ new aplikacion aplikacion name and done
+
+2.open this in it tab and add bot https://discordapp.com/developers/applications/663697600196640768/bots turn on public bot then you will get a token
+
+3. https://discordapp.com/oauth2/authorize?client_id=663697600196640768&scope=bot&permissions=8 how add your bot in youur discord server copy clijent id and prermissions number my id is 663697600196640768 and hawe number 8 this is Ambasador

@@ -13,7 +13,7 @@ namespace ClashLand.Core
 {
     internal static class Loggers 
     {
-        internal static Logger _logger;
+        internal static NLog.Logger _logger;
 
         internal static void Initialize()
         {
@@ -48,6 +48,15 @@ namespace ClashLand.Core
             _logger.Trace("Logger has been started.");
             _logger.Debug("Logger has been started.");
 
+        }
+         internal static void Error(Type Type, string Message)
+        {
+            _logger.Error(Type.Name + " : " + Message);
+#if Console
+            Console.WriteLine("[*] " + ConsolePad.Padding(Type.Name, 15) + " : " + Message);
+#else
+            //Debug.WriteLine("[*] " + ConsolePad.Padding(Type.Name, 15) + " : " + Message);
+#endif
         }
         internal static void Log(string message = "OK.", bool show = false, Defcon defcon = Defcon.DEFAULT)
         {
@@ -131,6 +140,7 @@ namespace ClashLand.Core
                     _logger.Debug(packet.ToString);
                     break;
                 }
+
             }
         }
     }

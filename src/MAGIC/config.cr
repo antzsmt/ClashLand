@@ -32,5 +32,17 @@
   <!-- Mysql Database -->
   <add key="Port" value="9339" />
   <!-- server port default 9339-->
+  <add key="LogLevel" value="0"/>
+  <!-- No Log = 0, Full Log = 1, Log only = 2 -->
+  <add key="Verbosity" value="2"/>
+  <!-- No Log = 0, Full Log = 1, Log only = 2 -->
+  <add key="UseDiscord" value="false" />
+  <!-- Enables Discord Bot -->
+  <add key="DiscordPrefix" value="?" />
+  <!-- Discord Bot Prefix -->
+  <add key="DiscordToken" value="NjYzNjk3NjAwMTk2NjQwNzY4.XhMTRQ.L4iFuYhzrPQxzBzHpxhTznHtJRs" />
+  <!-- Discord Bot Token -->
+  <add key="DiscordServerName" value="tetris" />
+  <!-- Discord Bot Server Name -->
   <!-- _______________________________________________________________________________________ -->
 </appSettings>

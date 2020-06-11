@@ -1,10 +1,10 @@
-﻿/*using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Discord.Commands;
 using Discord.WebSocket;
-using Magic.ClashOfClans.Core.API.Discord.Modules;
-using Magic.ClashOfClans.Core.Settings;
+using ClashLand.Extensions;
+using ClashLand.Core.API.Discord.Modules;
 
-namespace Magic.ClashOfClans.Core.API.Discord
+namespace ClashLand.Core.Core.API.Discord
 {
     internal class CommandHandler
     {
@@ -31,8 +31,8 @@ namespace Magic.ClashOfClans.Core.API.Discord
 
             var argPos = 0;
             if (_Message.HasStringPrefix(Constants.DiscordPrefix, ref argPos) ||
-                _Message.HasMentionPrefix(_DiscordClient.CurrentUser, ref argPos))
+                _Message.HasMentionPrefix(_DiscordClient.CurrentUser, ref argPos)) 
                 await _CommandService.ExecuteAsync(_Context, argPos);
         }
     }
-}*/
+}

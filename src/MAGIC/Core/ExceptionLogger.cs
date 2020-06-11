@@ -7,7 +7,7 @@ using SharpRaven.Data;
 
 namespace ClashLand.Core
 {
-    internal class Exceptions
+    internal class ExceptionLogger
     {
 
         private static readonly object s_sync = new object();

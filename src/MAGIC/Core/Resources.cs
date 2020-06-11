@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Threading;
 using ClashLand.Core.API;
+using ClashLand.Core.Core.API.Discord;
 using ClashLand.Core.Events;
 using ClashLand.Core.Networking;
+using ClashLand.Extensions;
 
 namespace ClashLand.Core
 {
     internal class Resources
     {
+        internal static Accounts Accounts;
         internal static Clans Clans;
         internal static Battles Battles;
         internal static Battles_V2 Battles_V2;
@@ -17,11 +20,10 @@ namespace ClashLand.Core
         internal static Region Region;
         internal static Player_Region PRegion;
         internal static Parser Parser;
-        internal static WebApi Api;
 
         internal static void Initialize()
         {
-            Exceptions.Initialize();
+            ExceptionLogger.Initialize();
             Devices.Initialize();
             Players.Initialize();
             Resources.Clans = new Clans();
@@ -33,9 +35,12 @@ namespace ClashLand.Core
             Resources.Region = new Region();
             Resources.PRegion = new Player_Region();
             Gateway.Initialize();
-            Gateway.Listen();
-            Resources.Api = new WebApi();
+            Gateway.Listen();;
             Resources.Parser = new Parser();
+            if (Constants.UseDiscord)
+            {
+                Client.Initialize();
+            }
         }
     }
 }

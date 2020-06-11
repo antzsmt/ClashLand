@@ -1,13 +1,13 @@
-﻿/*using System;
+﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
-using ClashLand.Core.Database;
-using ClashLand.Core.Networking;
 using ClashLand.Extensions;
+using ClashLand.Core.Networking;
+using ClashLand.Core.Database;
 
-namespace Magic.ClashOfClans.Core.API.Discord.Modules
+namespace ClashLand.Core.API.Discord.Modules
 {
     [Name("Core")]
     internal class Core_Module : ModuleBase<SocketCommandContext>
@@ -36,7 +36,7 @@ namespace Magic.ClashOfClans.Core.API.Discord.Modules
 
             _Builder.AddInlineField("SocketAsyncEventArgs", $"Created: {Gateway.NumberOfArgsCreated}\nIn-use: {Gateway.NumberOfArgsInUse}\nAvailable: {Gateway.NumberOfArgs}");
             _Builder.AddInlineField("Buffer", $"Created: {Gateway.NumberOfBuffersCreated}\nIn-use: {Gateway.NumberOfBuffersInUse}\nAvailable: {Gateway.NumberOfBuffers}");
-   
+
             _Builder.AddInlineField("Online Players", $"{ResourcesManager.OnlinePlayers.Count}");
             _Builder.AddInlineField("In Memory Clans", $"{ResourcesManager.GetInMemoryAllianceCount()}");
 
@@ -47,14 +47,14 @@ namespace Magic.ClashOfClans.Core.API.Discord.Modules
         public async Task StatusExtra()
         {
             var _Builder = new EmbedBuilder
-            {
-                Color = new Color(65, 105, 225),
-                Footer = new EmbedFooterBuilder()
-                {
-                    Text = $"Requested by @{Context.User.Username}"
-                },
-                Timestamp = DateTime.UtcNow,
-            };
+             {
+                 Color = new Color(65, 105, 225),
+                 Footer = new EmbedFooterBuilder()
+                 {
+                     Text = $"Requested by @{Context.User.Username}"
+                 },
+                 Timestamp = DateTime.UtcNow,
+             };
             _Builder.WithTitle(Utils.ParseConfigString("DiscordServerName") + " Status");
 
 
@@ -79,5 +79,25 @@ namespace Magic.ClashOfClans.Core.API.Discord.Modules
 
             await Context.Channel.SendMessageAsync($"{Format.Bold(Context.User.ToString())} 🏓 {(int)sw.Elapsed.TotalMilliseconds}ms").ConfigureAwait(false);
         }
+
+        [Command("easystatus", RunMode = RunMode.Async)]
+        public async Task Easystatus()
+        {
+            var _Builder = new EmbedBuilder
+            {
+                Color = new Color(65, 105, 225),
+                Footer = new EmbedFooterBuilder()
+                {
+                    Text = $"Requested by @{Context.User.Username}"
+                },
+                Timestamp = DateTime.UtcNow,
+            };
+            _Builder.WithTitle(Utils.ParseConfigString("DiscordServerName") + " Status");
+
+
+            _Builder.AddInlineField("SocketAsyncEventArgs", $"Created: {Gateway.NumberOfArgsCreated}\nIn-use: {Gateway.NumberOfArgsInUse}\nAvailable: {Gateway.NumberOfArgs}");
+            _Builder.AddInlineField("Buffer", $"Created: {Gateway.NumberOfBuffersCreated}\nIn-use: {Gateway.NumberOfBuffersInUse}\nAvailable: {Gateway.NumberOfBuffers}");
+            await ReplyAsync("", false, _Builder);
+        }
     }
-}*/
+}

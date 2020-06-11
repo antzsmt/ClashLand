@@ -1,9 +1,9 @@
-﻿/*using System;
+﻿using System;
+using ClashLand.Extensions;
 using Discord;
 using Discord.WebSocket;
-using ClashLand.Extensions;
 
-namespace Magic.ClashOfClans.Core.API.Discord
+namespace ClashLand.Core.Core.API.Discord
 {
     internal static class Client
     {
@@ -19,7 +19,7 @@ namespace Magic.ClashOfClans.Core.API.Discord
                     {
                         LogLevel = LogSeverity.Error,
                     });
-
+                Console.WriteLine(@"Diskord Bot run!" + Environment.NewLine);
                 CommandHandler = new CommandHandler();
                 CommandHandler.InstallAsync(_Client).Wait();
 
@@ -44,5 +44,6 @@ namespace Magic.ClashOfClans.Core.API.Discord
                 ExceptionLogger.Log(ex, "Failed to diconnect from the Discord API server.");
             }
         }
+
     }
-}*/
+}
